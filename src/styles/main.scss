@@ -1,0 +1,261 @@
+// --- VARIÁVEIS DE ESTILO ---
+$bg-primary: #ffffff;
+$text-primary: #000000;
+$text-secondary: #555555;
+$accent-gray: #f7f7f7; // Fundo suave para os cards
+$border-color: #eeeeee;
+$transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+// --- CONFIGURAÇÃO GLOBAL ---
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif; // Fonte limpa para o corpo
+}
+
+body {
+  background-color: $bg-primary;
+  color: $text-primary;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+// --- NAVBAR ---
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 10%;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid $border-color;
+
+  .logo {
+    font-family: 'Quicksand', sans-serif; // Fonte com bordas curvas
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: $text-primary;
+    text-decoration: none;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: $transition-smooth;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  .links {
+    display: flex;
+    gap: 35px;
+
+    a {
+      text-decoration: none;
+      color: $text-primary;
+      font-size: 0.95rem;
+      font-weight: 800; // Grossura aumentada conforme pedido
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: $transition-smooth;
+
+      &:hover {
+        opacity: 0.5;
+      }
+    }
+  }
+}
+
+// --- CONTAINERS DE PÁGINA ---
+.page-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 140px 10% 80px;
+  text-align: center;
+}
+
+.hero-title {
+  font-size: clamp(2.5rem, 8vw, 5.5rem);
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 25px;
+  text-transform: uppercase;
+}
+
+// --- SEÇÃO SOBRE ---
+.sobre-text {
+  max-width: 750px;
+  font-size: 1.15rem;
+  color: $text-secondary;
+  line-height: 1.8; // Garante o espaçamento visual das 5 linhas
+  margin-top: 20px;
+  text-align: center;
+}
+
+// --- GRID DE HABILIDADES (HOME) ---
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 20px;
+  width: 100%;
+  max-width: 900px;
+  margin-top: 40px;
+
+  .skill-card {
+    background-color: $accent-gray;
+    border: 1px solid $border-color;
+    padding: 35px 20px;
+    border-radius: 24px; // Bordas bem redondas
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    transition: $transition-smooth;
+
+    &:hover {
+      transform: translateY(-8px);
+      background-color: $text-primary;
+      
+      .skill-icon, .skill-name {
+        color: $bg-primary;
+      }
+    }
+
+    .skill-icon {
+      width: 42px;
+      height: 42px;
+      color: $text-primary;
+      transition: $transition-smooth;
+    }
+
+    .skill-name {
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: $text-primary;
+      transition: $transition-smooth;
+    }
+  }
+}
+
+// --- GRID DE PROJETOS ---
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.project-card {
+  height: 320px;
+  border: 1px solid $border-color;
+  border-radius: 24px;
+  background-color: $accent-gray;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: $transition-smooth;
+  cursor: pointer;
+  
+  span {
+    color: #999;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  &:hover {
+    background-color: $text-primary;
+    border-color: $text-primary;
+    span { color: $bg-primary; }
+  }
+}
+
+// --- RESPONSIVIDADE MOBILE ---
+@media (max-width: 768px) {
+  nav {
+    padding: 20px 5%;
+    .logo { font-size: 1.4rem; }
+    .links { gap: 15px; }
+    .links a { font-size: 0.8rem; }
+  }
+
+  .hero-title {
+    font-size: 2.8rem;
+  }
+  
+  .page-container {
+    padding-top: 120px;
+  }
+}
+// --- AJUSTES DE ALINHAMENTO ---
+
+.sobre-layout {
+  align-items: flex-start; // Alinha o container geral à esquerda
+  text-align: left;        // Garante que o texto comece na esquerda
+}
+
+.sobre-content {
+  max-width: 800px;
+  width: 100%;
+}
+
+.left-align {
+  text-align: left !important;
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.sobre-text {
+  max-width: 700px;
+  font-size: 1.2rem;
+  color: $text-secondary;
+  line-height: 1.8;
+  margin-top: 30px;
+  // Removido o text-align: center anterior
+}
+
+// Ajuste no título para a página Sobre
+h1.hero-title.left-align {
+  margin-bottom: 10px;
+  justify-content: flex-start;
+  display: flex;
+}
+
+// Responsividade para manter o alinhamento bonito no mobile
+@media (max-width: 768px) {
+  .page-container.sobre-layout {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+}
+.logo-container {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  height: 40px;
+}
+
+.letra-animada {
+  display: inline-block;
+  font-size: 1.8rem;
+  color: #000000;
+  width: 25px; // Largura fixa evita que a navbar "dance" quando a fonte muda
+  text-align: center;
+  transition: font-family 0.8s ease-in-out, transform 0.3s;
+  
+  &:hover {
+    transform: scale(1.2);
+  }
+}
+
+// Remova ou comente a antiga classe .logo se não for mais usar
